@@ -96,24 +96,10 @@ $(document).ready(function() {
   attachContactListeners();
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
-    var inputtedFirstName = $("input#new-first-name").val();
-    var inputtedLastName = $("input#new-last-name").val();
-    var inputtedPhoneNumber = $("input#new-phone-number").val();
-    var inputtedEmailAddress = $("input#new-email-address").val();
-    var inputtedStreetAddress = $("input#new-street-address").val();
-    var inputtedCityAddress = $("input#new-city-address").val();
-    var selectedStateAddress = $("select#new-state-address").val();
-    var inputtedZipAddress = $("input#new-zip-address").val();
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
-    $("input#new-phone-number").val("");
-    $("input#new-email-address").val("");
-    $("input#new-street-address").val("");
-    $("input#new-city-address").val("");
-    $("select#new-state-address").val("");
-    $("input#new-zip-address").val("");
-    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmailAddress, inputtedStreetAddress, inputtedCityAddress, selectedStateAddress, inputtedZipAddress);
-    addressBook.addContact(newContact);
+    addressBook.addContact(new Contact($("input#new-first-name").val(), $("input#new-last-name").val(), $("input#new-phone-number").val(), $("input#new-email-address").val(),
+    $("input#new-street-address").val(),
+    $("input#new-city-address").val(), $("select#new-state-address").val(), $("input#new-zip-address").val()
+    ))
     displayContactDetails(addressBook);
   });
 });

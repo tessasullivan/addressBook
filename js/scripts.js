@@ -100,6 +100,14 @@ $(document).ready(function() {
     $("input#new-street-address").val(),
     $("input#new-city-address").val(), $("select#new-state-address").val(), $("input#new-zip-address").val()
     ))
+    $("input#new-first-name").val("");
+    $("input#new-last-name").val("");
+    $("input#new-phone-number").val("");
+    $("input#new-email-address").val("");
+    $("input#new-street-address").val("");
+    $("input#new-city-address").val("");
+    $("select#new-state-address").val("");
+    $("input#new-zip-address").val("");
     displayContactDetails(addressBook);
   });
 });

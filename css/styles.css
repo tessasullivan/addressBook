@@ -1,3 +1,10 @@
 #show-contact {
   display: none;
 }
+li {
+  color: blue;
+}
+li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

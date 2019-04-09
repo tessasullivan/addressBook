@@ -1,3 +1,48 @@
+var fred = new Contact (
+  firstName = "Fred",
+  lastName = "Flintstone",
+  phoneNumber = "2534567890",
+  emailAddress = 'fflintstone@rocks.com',
+  streetAddress = '103 Rubble Dr',
+  cityAddress = 'Rock City',
+  stateAddress = 'OR',
+  zipAddress = '99999'
+);
+
+var wilma = new Contact (
+  firstName = "Wilma",
+  lastName = "Flintstone",
+  phoneNumber = "2534567891",
+  emailAddress = 'wflintstone@rocks.com',
+  streetAddress = '103 Rubble Dr',
+  cityAddress = 'Rock City',
+  stateAddress = 'OR',
+  zipAddress = '99999'
+);
+
+var barney = new Contact (
+  firstName = "Barney",
+  lastName = "Rubble",
+  phoneNumber = "25345677900",
+  emailAddress = 'brubble@rocks.com',
+  streetAddress = '105 Rubble Dr',
+  cityAddress = 'Rock City',
+  stateAddress = 'OR',
+  zipAddress = '99999'
+);
+
+var betty = new Contact (
+  firstName = "Betty",
+  lastName = "Rubble",
+  phoneNumber = "25345679900",
+  emailAddress = 'bfrubble@rocks.com',
+  streetAddress = '105 Rubble Dr',
+  cityAddress = 'Rock City',
+  stateAddress = 'OR',
+  zipAddress = '99999'
+);
+
+
 // Business Logic for AddressBook ---------
 function AddressBook() {
   this.contacts = [],
@@ -56,6 +101,10 @@ Contact.prototype.fullName = function() {
 
 // User Interface Logic ---------
 var addressBook = new AddressBook();
+addressBook.addContact(fred);
+addressBook.addContact(wilma);
+addressBook.addContact(barney);
+addressBook.addContact(betty);
 
 function displayContactDetails(addressBookToDisplay) {
   var contactsList = $("ul#contacts");

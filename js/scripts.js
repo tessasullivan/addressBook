@@ -2,7 +2,7 @@ var fred = new Contact (
   firstName = "Fred",
   lastName = "Flintstone",
   phoneNumber = "2534567890",
-  emailAddress = 'fflintstone@rocks.com',
+  emailAddresses = {emailAddress: 'fflintstone@rocks.com', altEmail : "abc@gmail.com"},
   streetAddress = '103 Rubble Dr',
   cityAddress = 'Rock City',
   stateAddress = 'OR',
@@ -13,7 +13,7 @@ var wilma = new Contact (
   firstName = "Wilma",
   lastName = "Flintstone",
   phoneNumber = "2534567891",
-  emailAddress = 'wflintstone@rocks.com',
+  emailAddresses = {emailAddress: 'wflintstone@rocks.com', altEmail : "abc@gmail.com"},
   streetAddress = '103 Rubble Dr',
   cityAddress = 'Rock City',
   stateAddress = 'OR',
@@ -24,7 +24,7 @@ var barney = new Contact (
   firstName = "Barney",
   lastName = "Rubble",
   phoneNumber = "25345677900",
-  emailAddress = 'brubble@rocks.com',
+  emailAddresses = {emailAddress: 'brubble@rocks.com', altEmail: "altBarney@alt.com"},
   streetAddress = '105 Rubble Dr',
   cityAddress = 'Rock City',
   stateAddress = 'OR',
@@ -35,7 +35,7 @@ var betty = new Contact (
   firstName = "Betty",
   lastName = "Rubble",
   phoneNumber = "25345679900",
-  emailAddress = 'bfrubble@rocks.com',
+  emailAddresses = {emailAddress: 'bfrubble@rocks.com', altEmail: "altBetty@alt.com"},
   streetAddress = '105 Rubble Dr',
   cityAddress = 'Rock City',
   stateAddress = 'OR',
@@ -87,7 +87,6 @@ function Contact(firstName, lastName, phoneNumber, emailAddresses, streetAddress
   this.firstName = firstName,
   this.lastName = lastName,
   this.phoneNumber = phoneNumber,
-//  this.emailAddress = emailAddress,
   this.emailAddresses = emailAddresses,
   this.streetAddress = streetAddress,
   this.cityAddress = cityAddress,
@@ -131,7 +130,6 @@ function showContact(contactId) {
   $(".state-address").html(contact.stateAddress);
   $(".zip-address").html(contact.zipAddress);
 
-console.log(contact.emailAddresses);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -147,6 +145,18 @@ function attachContactListeners() {
   });
 };
 
+function clearFields() {
+  $("input#new-first-name").val("");
+  $("input#new-last-name").val("");
+  $("input#new-phone-number").val("");
+  $("input#new-email-address").val("");
+  $("input#new-email-address-alt").val("");
+  $("input#new-street-address").val("");
+  $("input#new-city-address").val("");
+  $("select#new-state-address").val("");
+  $("input#new-zip-address").val("");
+}
+
 $(document).ready(function() {
   attachContactListeners();
   $("form#new-contact").submit(function(event) {
@@ -160,16 +170,8 @@ $(document).ready(function() {
     addressBook.addContact(new Contact($("input#new-first-name").val(), $("input#new-last-name").val(), $("input#new-phone-number").val(), emailAddresses,
     $("input#new-street-address").val(),
     $("input#new-city-address").val(), $("select#new-state-address").val(), $("input#new-zip-address").val()
-    ))
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
-    $("input#new-phone-number").val("");
-    $("input#new-email-address").val("");
-    $("input#new-email-address-alt").val("");
-    $("input#new-street-address").val("");
-    $("input#new-city-address").val("");
-    $("select#new-state-address").val("");
-    $("input#new-zip-address").val("");
+  ));
+    clearFields();
     displayContactDetails(addressBook);
   });
 });

@@ -83,16 +83,21 @@ AddressBook.prototype.deleteContact = function(id) {
 }
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber, emailAddress, streetAddress, cityAddress, stateAddress, zipAddress) {
+function Contact(firstName, lastName, phoneNumber, emailAddresses, streetAddress, cityAddress, stateAddress, zipAddress) {
   this.firstName = firstName,
   this.lastName = lastName,
   this.phoneNumber = phoneNumber,
-  this.emailAddress = emailAddress
-  this.streetAddress = streetAddress
-  this.cityAddress = cityAddress
-  this.stateAddress = stateAddress
+//  this.emailAddress = emailAddress,
+  this.emailAddresses = emailAddresses,
+  this.streetAddress = streetAddress,
+  this.cityAddress = cityAddress,
+  this.stateAddress = stateAddress,
   this.zipAddress = zipAddress
+}
 
+function EmailAddress(email, altEmail) {
+  this.emailAddress = email,
+  this.altEmail = altEmail
 }
 
 Contact.prototype.fullName = function() {
@@ -120,12 +125,13 @@ function showContact(contactId) {
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
-  $(".email-address").html(contact.emailAddress);
+  $(".email-address").html(contact.emailAddresses.emailAddress + ", <br> " + contact.emailAddresses.altEmail);
   $(".street-address").html(contact.streetAddress);
   $(".city-address").html(contact.cityAddress);
   $(".state-address").html(contact.stateAddress);
   $(".zip-address").html(contact.zipAddress);
 
+console.log(contact.emailAddresses);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -145,7 +151,13 @@ $(document).ready(function() {
   attachContactListeners();
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
-    addressBook.addContact(new Contact($("input#new-first-name").val(), $("input#new-last-name").val(), $("input#new-phone-number").val(), $("input#new-email-address").val(),
+
+    var emailAddress = $("input#new-email-address").val();
+    var altEmail = $("input#new-email-address-alt").val();
+
+    var emailAddresses = new EmailAddress (emailAddress, altEmail);
+//    console.log(emailAddresses);
+    addressBook.addContact(new Contact($("input#new-first-name").val(), $("input#new-last-name").val(), $("input#new-phone-number").val(), emailAddresses,
     $("input#new-street-address").val(),
     $("input#new-city-address").val(), $("select#new-state-address").val(), $("input#new-zip-address").val()
     ))
@@ -153,6 +165,7 @@ $(document).ready(function() {
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
     $("input#new-email-address").val("");
+    $("input#new-email-address-alt").val("");
     $("input#new-street-address").val("");
     $("input#new-city-address").val("");
     $("select#new-state-address").val("");

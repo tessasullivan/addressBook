@@ -2,12 +2,13 @@
 
 #### A program that allows users to input contact info and save a list of contacts
 
-#### By ** Crystal Fecteau & Kyle Harrington**
+#### By ** Tessa, Sullivan, Crystal Fecteau & Kyle Harrington**
 
 ## Description
 
 A website created with HTML, CSS/Bootstrap, JS/JQuery where a user can input a contact name, address, number, email, and have it saved for viewing upon clicking of a list.
 
+https://tessasullivan.github.io/addressBook
 
 ### Specs
 | Spec | Input | Output |
